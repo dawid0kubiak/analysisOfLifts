@@ -1,0 +1,12 @@
+<%= nav_bar fixed: :top, brand: 'Moja szkoła', responsive: true, fluid: true do %>
+    <%= menu_group do %>
+        <%= menu_item 'Start', root_path %>
+        <%= menu_item 'Karty', reports_cards_path %>
+        <%= menu_divider %>
+
+        <%= drop_down 'Ustawienia' do %>
+            <%= menu_item 'Typy wyciągu', lift_types_path %>
+
+        <% end %>
+    <% end %>
+<% end %>

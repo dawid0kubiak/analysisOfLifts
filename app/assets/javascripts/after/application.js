@@ -10,16 +10,5 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require turbolinks
-//= require jquery
-//= require jquery_ujs
-//= require twitter/bootstrap
-//= require bootstrap-table
-//= require chart
-//= require locale/bootstrap-table-pl-PL
-//= require_tree .
 
-$(document).on('turbolinks:load', function () {
-    $('[data-toggle="table"]').bootstrapTable();
-});
+//= require_tree .

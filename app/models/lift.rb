@@ -6,10 +6,10 @@ class Lift < ApplicationRecord
   def self.import(file)
     CSV.foreach(file.path, encoding: 'windows-1250:utf-8').with_index do |row, index|
       next if index == 0
-
-      lift = Lift.find_or_create_by(id_lift: row[0].to_i) do |lf|
-        lf.lift_type_id = 1
-      end
+      type = LiftType.where('condition like ?', row[8]).or(LiftType.where('condition like ?', row[9])).first
+      typ_id = type ? type.id : 1
+      lift = Lift.find_or_create_by(id_lift: row[0].to_i)
+      nn = lift.name
       lift.update(
           date_of_booking: row[1],
           date_of_commissioned: row[2],
@@ -20,7 +20,8 @@ class Lift < ApplicationRecord
           account: row[7],
           name: row[8],
           description: row[9],
-          addtional_data: row[10]
+          addtional_data: row[10],
+          lift_type_id: typ_id
       )
     end
   end

@@ -69,6 +69,6 @@ class LiftTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lift_type_params
-      params.require(:lift_type).permit(:type, :type, :name)
+      params.require(:lift_type).permit(:condition, :name)
     end
 end

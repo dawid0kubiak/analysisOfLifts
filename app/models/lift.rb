@@ -20,7 +20,7 @@ class Lift < ApplicationRecord
           name: row[8],
           description: row[9],
           addtional_data: row[10],
-          lift_type_id: 1
+          lift_type_id: -1
       )
     end
     self.set_type

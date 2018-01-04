@@ -1,5 +1,6 @@
 class LiftTypesController < ApplicationController
   before_action :set_lift_type, only: [:show, :edit, :update, :destroy]
+before_action :set_lifts, only: [:new,  :edit]
 
   # GET /lift_types
   # GET /lift_types.json
@@ -15,7 +16,7 @@ class LiftTypesController < ApplicationController
   # GET /lift_types/new
   def new
     @lift_type = LiftType.new
-  end
+      end
 
   # GET /lift_types/1/edit
   def edit
@@ -67,6 +68,9 @@ class LiftTypesController < ApplicationController
       @lift_type = LiftType.find(params[:id])
     end
 
+  def set_lifts
+    @lifts = Lift.where(lift_type_id: -1)
+  end
     # Never trust parameters from the scary internet, only allow the white list through.
     def lift_type_params
       params.require(:lift_type).permit(:condition, :name)

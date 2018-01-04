@@ -1,7 +1,8 @@
 class ReportsController < ApplicationController
+  before_action :init
+
   def cards
     @lifts = Lift.where(transaction_type: 'Płatność kartą').order(date_of_commissioned: :desc)
-    @pieSize = {height: 400, width: 400}
 
     colors = {
         red: {color: "#F7464A", highlight: "#FF5A5E"},
@@ -11,11 +12,17 @@ class ReportsController < ApplicationController
         dark_grey: {color: "#4D5360", highlight: "#616774"}
     }
 
-    data_pie_del = @lifts.group(:name).select(:name, :amount).sum(:amount)
-    @pieData = data_pie_del.map {|data| {value: data[1].abs, label: data[0]}}.to_json
+    @nameData = @lifts.group(:name).select(:name, :amount).sum(:amount)
+                    .map {|data| {value: data[1].abs, label: data[0]}}.to_json
 
-    data_type = @lifts.group(:lift_type_id).select(:lift_type_id, :amount).sum(:amount)
-    @typeData = data_type.map {|data| {value: data[1].abs, label: LiftType.find(data[0]).name}}.to_json
+    @typeData = @lifts.group(:lift_type_id).select(:lift_type_id, :amount).sum(:amount)
+                    .map {|data| {value: data[1].abs, label: LiftType.find(data[0]).name}}.to_json
 
+  end
+
+  private
+
+  def init
+    @pieSize = {height: 400, width: 600}
   end
 end

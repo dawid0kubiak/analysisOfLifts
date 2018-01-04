@@ -7,4 +7,9 @@ class LiftsController < ApplicationController
     Lift.import(params[:file])
     redirect_to root_url, notice: "Products imported."
   end
+
+  def set_type
+    Lift.set_type
+    redirect_to root_url, notice: "Products imported."
+  end
 end

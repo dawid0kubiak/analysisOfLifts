@@ -1,5 +1,11 @@
+<div class="col-md-3">
+  <h2>Podział wg nazwy:</h2>
+<%= pie :name_chart, @pieSize, @pieData%>
+</div>
+<div class="col-md-3">
 <h2>Podział wg nazwy:</h2>
-<%= pie :pie_chart, @pieSize, @pieData%>
+<%= pie :type_chart, @pieSize, @typeData%>
+</div>
 <h2>Saldo transakcji: <span id="amountcount"></span></h2>
 <table id="report" data-toggle="table" data-search="true">
   <thead>
@@ -12,6 +18,7 @@
     <th>Nazwa i rachunek nadawcy/odbiorcy</th>
     <th>Opis transakcji</th>
     <th>Dane dodatkowe</th>
+    <th>Typ</th>
   </tr>
   </thead>
   <tbody>
@@ -28,6 +35,7 @@
       </td>
       <td><%= lift.description %></td>
       <td><%= lift.addtional_data %></td>
+      <td><%= lift.lift_type.name %></td>
     </tr>
   <% end %>
   </tbody>

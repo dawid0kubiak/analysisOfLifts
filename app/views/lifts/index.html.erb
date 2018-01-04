@@ -1,0 +1,48 @@
+<div>
+  <h3>Import z pliku CSV</h3>
+  <%= bootstrap_form_tag url: import_lifts_path, html: { enctype: 'multipart/form-data' } do |f| %>
+    <div class="input-group">
+  <span class="input-group-btn">
+    <span class="btn btn-small btn-primary btn-inverse" onclick="$(this).parent().find('input[type=file]').click();">Plik wyciągu</span>
+    <%= f.file_field_tag :file, onchange: "$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\\\|/]/).pop());", style: 'display: none;' %>
+  </span>
+      <span class="form-control"></span>
+    </div>
+    <%= f.submit_tag 'Import CSV', class: 'btn btn-success' %>
+  <% end %>
+</div>
+
+
+<table data-toggle="table" data-search="true">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Data księgowania</th>
+    <th>Data zlecona</th>
+    <th>Typ transakcji</th>
+    <th>Kwota</th>
+    <th>Nazwa i rachunek nadawcy/odbiorcy</th>
+    <th>Opis transakcji</th>
+    <th>Dane dodatkowe</th>
+    <th>Typ</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @lifts.each do |lift| %>
+    <tr>
+      <td><%= lift.id_lift %></td>
+      <td><%= lift.date_of_booking %></td>
+      <td><%= lift.date_of_commissioned %></td>
+      <td><%= lift.transaction_type %></td>
+      <td id="ammount"><%= lift.amount %></td>
+      <td>
+        <%= lift.name %>
+        <%= lift.account %>
+      </td>
+      <td><%= lift.description %></td>
+      <td><%= lift.addtional_data %></td>
+      <td><%= lift.lift_type.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

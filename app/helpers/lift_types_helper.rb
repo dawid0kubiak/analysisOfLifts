@@ -1,0 +1,2 @@
+module LiftTypesHelper
+end

@@ -1,0 +1,34 @@
+<h2>Podział wg nazwy:</h2>
+<%= pie :pie_chart, @pieSize, @pieData%>
+<h2>Saldo transakcji: <span id="amountcount"></span></h2>
+<table id="report" data-toggle="table" data-search="true">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Data księgowania</th>
+    <th>Data zlecona</th>
+    <th>Typ transakcji</th>
+    <th>Kwota</th>
+    <th>Nazwa i rachunek nadawcy/odbiorcy</th>
+    <th>Opis transakcji</th>
+    <th>Dane dodatkowe</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @lifts.each do |lift| %>
+    <tr>
+      <td><%= lift.id_lift %></td>
+      <td><%= lift.date_of_booking %></td>
+      <td><%= lift.date_of_commissioned %></td>
+      <td><%= lift.transaction_type %></td>
+      <td class="amount"><%= lift.amount %></td>
+      <td>
+        <%= lift.name %>
+        <%= lift.account %>
+      </td>
+      <td><%= lift.description %></td>
+      <td><%= lift.addtional_data %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

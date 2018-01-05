@@ -1,13 +1,14 @@
-<%= nav_bar fixed: :top, brand: 'Moja szkoła', responsive: true, fluid: true do %>
-    <%= menu_group do %>
-        <%= menu_item 'Start', root_path %>
-        <%= menu_item 'Karty', reports_cards_path %>
-        <%= menu_divider %>
+<%= nav_bar fixed: :top, brand: 'Moje konto', responsive: true, fluid: true do %>
+  <%= menu_group do %>
+    <%= menu_item 'Start', root_path %>
+    <%= menu_item 'Wszystkie wydatki', reports_all_operation_path %>
+    <%= menu_item 'Karty', reports_cards_path %>
+    <%= menu_divider %>
 
-        <%= drop_down 'Ustawienia' do %>
-            <%= menu_item 'Typy wyciągu', lift_types_path %>
-            <%= menu_item 'Zmiana typów wyciągów', set_type_lifts_path %>
-
-        <% end %>
+    <%= drop_down 'Ustawienia' do %>
+      <%= menu_item 'Typy wyciągu', lift_types_path %>
+      <%= menu_item 'Zmiana typów wyciągów', set_type_lifts_path %>
+      <%= menu_item 'Wyloguj', destroy_user_session_path, method: :delete %>
     <% end %>
+  <% end %>
 <% end %>

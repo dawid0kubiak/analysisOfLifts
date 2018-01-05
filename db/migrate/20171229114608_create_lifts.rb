@@ -11,6 +11,7 @@ class CreateLifts < ActiveRecord::Migration[5.1]
       t.string :account
       t.string :name
       t.integer :lift_type_id
+      t.integer :user_id
       t.text :description
       t.text :addtional_data
 

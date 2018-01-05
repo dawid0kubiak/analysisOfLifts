@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AnalysisOfLifts</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>AnalysisOfLifts</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  <%= render 'layouts/menu' %>
-  <div class="container-fluid" style="padding-top: 50px;">
-    <%= yield %>
-  </div>
-    <%= javascript_include_tag 'after/application', 'data-turbolinks-track': 'reload' %>
-  </body>
+<body>
+<%= render 'layouts/menu' %>
+<div class="container-fluid" style="padding-top: 50px;">
+  <%= yield %>
+</div>
+</body>
+<script>
+    $('#report').bootstrapTable({
+        onSearch: function () {
+            amountCount();
+        }
+    });
+    amountCount();
+</script>
 </html>

@@ -1,13 +1,10 @@
 class Lift < ApplicationRecord
   require 'csv'
-
   belongs_to :lift_type
 
-  def self.import(file)
+  def self.import(file, current_user_id)
     CSV.foreach(file.path, encoding: 'windows-1250:utf-8').with_index do |row, index|
       next if index == 0
-      # type = LiftType.where('condition like ?', row[8]).or(LiftType.where('condition like ?', row[9])).first
-      # typ_id = type ? type.id : 1
       lift = Lift.find_or_create_by(id_lift: row[0].to_i)
       lift.update(
           date_of_booking: row[1],
@@ -20,19 +17,20 @@ class Lift < ApplicationRecord
           name: row[8],
           description: row[9],
           addtional_data: row[10],
-          lift_type_id: -1
+          lift_type_id: -1,
+          user_id: current_user_id
       )
     end
-    self.set_type
+    set_type current_user_id
   end
 
-    def self.set_type
-    LiftType.all.each do |typ|
+  def self.set_type(current_user_id)
+    LiftType.where('user_id = ?', current_user_id).each do |typ|
       next unless typ.condition
-     lifts = Lift.where(typ.condition)
+      lifts = Lift.where('user_id = ?', current_user_id).where(typ.condition)
       lifts.update(lift_type_id: typ.id)
-      puts
     end
   end
+
 
 end

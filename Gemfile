@@ -8,6 +8,8 @@ end
 gem 'bootstrap-table-rails'
 gem 'bootstrap_form'
 gem 'chart'
+gem 'devise'
+gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'rails', '~> 5.1.4'
 gem 'sqlite3'

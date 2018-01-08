@@ -1,0 +1,7 @@
+<%= bootstrap_form_tag url: '/subscribe' do |f| %>
+  <%= f.collection_radio_buttons :skills, LiftType.all, :id, :name, inline: true %>
+  <%= f.collection_select :product, LiftType.all, :id, :name, { label: "Jeżeli pole:" }, { class: "selectpicker" } %>
+  <%= f.select :product, [[1, "Apple"], [2, "Grape"]], { label: 'wybierz' }, { class: "selectpicker" } %>
+  <%= f.text_field :email, value: dane %>
+  <%= f.submit %>
+<% end %>

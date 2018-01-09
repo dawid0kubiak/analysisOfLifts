@@ -1,7 +1,25 @@
-<%= bootstrap_form_tag url: '/subscribe' do |f| %>
-  <%= f.collection_radio_buttons :skills, LiftType.all, :id, :name, inline: true %>
-  <%= f.collection_select :product, LiftType.all, :id, :name, { label: "Jeżeli pole:" }, { class: "selectpicker" } %>
-  <%= f.select :product, [[1, "Apple"], [2, "Grape"]], { label: 'wybierz' }, { class: "selectpicker" } %>
-  <%= f.text_field :email, value: dane %>
-  <%= f.submit %>
-<% end %>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active">
+    <a href="#simple" aria-controls="simple" role="tab" data-toggle="tab">Ustaw filter</a>
+  </li>
+  <li role="presentation">
+    <a href="#saved" aria-controls="saved" role="tab" data-toggle="tab">Filtry zapisaneme</a>
+  </li>
+  <li role="presentation">
+    <a href="#advanced" aria-controls="advanced" role="tab" data-toggle="tab">Zaawansowane</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="simple">
+    <%= render 'simple_filters', url: reports_all_operation_path %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="saved">
+    <%= render 'saved_filters', url: reports_all_operation_path %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="advanced">
+    <%= render 'advanced_filters', url: reports_all_operation_path %>
+  </div>
+</div>
+
+
+

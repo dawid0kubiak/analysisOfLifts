@@ -1,17 +1,17 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <h2>Podział wg nazwy:</h2>
     <%= pie :name_chart, @pieSize, @nameData %>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <h2>Podział wg typu:</h2>
     <%= pie :type_chart, @pieSize, @typeData %>
   </div>
+  <div class="col-md-4">
+    <%= render 'form', dane: 'start' %>
+    <div id="insert"></div>
+  </div>
 </div>
-
-<%= render 'form', dane: 'start' %>
-
-
 <div class="row">
 
   <h2>Saldo transakcji: <span id="amountcount"></span></h2>

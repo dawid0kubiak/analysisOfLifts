@@ -1,0 +1,15 @@
+<%= link_to "<span class=\"glyphicon glyphicon-plus\"></span>".html_safe, reports_add_form_path, remote: true %>
+<%= link_to "<span class=\"glyphicon glyphicon-minus\"></span>".html_safe, reports_sub_form_path, remote: true %>
+<%= bootstrap_form_tag url: url do |f| %>
+  <% @i.times.each do |i| %>
+    <div class="bs-callout bs-callout-danger">
+
+      <%= f.select "[simple][#{i}]operator", [['i', 'and'], ['lub', 'or']], {label: 'warunek'}, {class: "selectpicker"} if i > 0 %>
+      <%= f.select "[simple][#{i}]filed", Lift.column_names, {label: "Jeżeli pole:"}, {class: "selectpicker"} %>
+      <%= f.select "[simple][#{i}]condition", [['zawiera', 'like'], ['=', '=']], {label: 'warunek'}, {class: "selectpicker"} %>
+      <%= f.text_field "[simple][#{i}]value", label: 'Wartość' %>
+    </div>
+  <% end %>
+  <%= f.submit 'Zastosuj' %>
+<% end %>
+

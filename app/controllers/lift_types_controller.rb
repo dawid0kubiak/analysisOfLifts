@@ -26,7 +26,7 @@ class LiftTypesController < ApplicationController
   # POST /lift_types.json
   def create
     @lift_type = LiftType.new(lift_type_params)
-
+@lift_type.user_id = current_user.id
     respond_to do |format|
       if @lift_type.save
         format.html {redirect_to lift_types_path, notice: 'Lift type was successfully created.'}

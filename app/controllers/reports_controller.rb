@@ -13,18 +13,18 @@ class ReportsController < ApplicationController
   end
 
   def all_operation
-    sql = ''
+    @sql = ''
     if params.keys.include? 'simple'
       simples = params[:simple]
       simples.each do |simple|
-        sql = where_build simple, sql
+        @sql = where_build simple, @sql
       end
     elsif params.keys.include? 'product'
-      sql = LiftType.find(params[:product]).condition
+      @sql = LiftType.find(params[:product]).condition
     elsif params.keys.include? 'value'
-      sql = params[:value]
+      @sql = params[:value]
     end
-    @lifts = @lifts.where('amount < 0').where(sql)
+    @lifts = @lifts.where('amount < 0').where(@sql)
 
     @name_data = @lifts.group(:name).select(:name, :amount).sum(:amount)
                      .map {|data| {value: data[1].abs, label: data[0]}}.to_json

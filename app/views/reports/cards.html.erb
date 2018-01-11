@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <h2>Podział wg nazwy:</h2>
-    <%= pie :name_chart, @pie_size, @name_data %>
+    <%= pie :name_chart, @chart_data[:size], @chart_data[:name] %>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <h2>Podział wg typu:</h2>
-    <%= pie :type_chart, @pie_size, @type_data %>
+    <%= pie :type_chart, @chart_data[:size], @chart_data[:type] %>
   </div>
 </div>
 <div class="row">

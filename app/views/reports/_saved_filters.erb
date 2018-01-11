@@ -1,4 +1,4 @@
 <%= bootstrap_form_tag url: url do |f| %>
-  <%= f.collection_select :product, LiftType.all, :id, :name, {label: "Filtry zapisane:"}, {class: "selectpicker"} %>
+  <%= f.collection_select :product, LiftType.all, :id, :name, label: "Filtry zapisane:"%>
   <%= f.submit 'Zastosuj' %>
 <% end %>

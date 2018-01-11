@@ -1,5 +1,6 @@
 class LiftsController < ApplicationController
   def index
+    session[:i] = 0
     @lifts = Lift.where('user_id = ?', current_user.id).order(date_of_commissioned: :desc)
   end
 

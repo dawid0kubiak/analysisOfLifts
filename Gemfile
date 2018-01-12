@@ -13,7 +13,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'pg'
+gem 'pg', group: :production
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
 gem 'rails-i18n', '~> 5.0.0'
@@ -37,5 +37,3 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

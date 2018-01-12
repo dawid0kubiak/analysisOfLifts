@@ -62,9 +62,9 @@ class ReportsController < ApplicationController
 
     sql += case condition
              when /like/
-               filed + ' ' + condition + ' "%' + value + '%" ' + add_oper(operator)
+               filed + ' ' + condition + " '%" + value + "%' " + add_oper(operator)
              else
-               filed + ' ' + condition + ' "' + value + '" ' + add_oper(operator)
+               filed + ' ' + condition + " '" + value + "' " + add_oper(operator)
            end
     sql
   end

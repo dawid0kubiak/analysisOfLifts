@@ -6,11 +6,11 @@ class LiftsController < ApplicationController
 
   def import
     Lift.import(params[:file], current_user.id)
-    redirect_to root_url, notice: "Products imported."
+    redirect_to root_url, notice: 'Products imported.'
   end
 
   def set_type
     Lift.set_type(current_user.id)
-    redirect_to root_url, notice: "Products imported."
+    redirect_to root_url, notice: 'Products imported.'
   end
 end

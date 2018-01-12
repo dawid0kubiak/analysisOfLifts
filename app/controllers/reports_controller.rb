@@ -17,17 +17,22 @@ class ReportsController < ApplicationController
   private
 
   def chart_data(lifts)
-    name_data = lifts.group(:name).select(:name, :amount).sum(:amount)
-                    .map {|data| {
-                        value: data[1].abs, label: data[0]}}.to_json
 
-    data = lifts.group(:name).select(:name, :amount).sum(:amount)
-    sum = data.map{|d| d[1]}.sum
+    {size: {height: 400, width: 600},
+     name: (get_data lifts.group(:name).select(:name, :amount).sum(:amount)),
+     type: (get_data lifts.group(:lift_type_id).select(:lift_type_id, :amount).sum(:amount), LiftType)}
+  end
 
-    type_data = lifts.group(:lift_type_id).select(:lift_type_id, :amount).sum(:amount)
-                    .map {|data| {
-                        value: data[1].abs, label: "% ".html_safe+LiftType.find(data[0]).name}}.to_json
-    {size: {height: 300, width: 500}, name: name_data, type: type_data}
+  def get_data(data, *model)
+    sum = data.map {|d| d[1]}.sum
+    data.map {|data| format_data(data, sum, model)
+      {value: data[1].abs, label: data[0]}}.to_json
+  end
+
+  def format_data(data, sum, model)
+    proc = data[1] / sum * 100
+    data[0] = model[0].find(data[0]).name unless model.empty?
+    data[0] = data[0] + ' (' + proc.round(2).to_s + ' %) '
   end
 
   def sql_build

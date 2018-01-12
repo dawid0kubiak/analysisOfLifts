@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   get 'reports/add_form'
   get 'reports/sub_form'
 
-resources :lifts, only: :index do
-  collection { post :import }
-  collection { get :set_type }
-end
+  resources :lifts, only: :index do
+    collection { post :import }
+    collection { get :set_type }
+  end
 
   root 'lifts#index'
 end

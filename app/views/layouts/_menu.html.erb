@@ -8,6 +8,7 @@
     <%= drop_down 'Ustawienia' do %>
       <%= menu_item 'Typy wyciągu', lift_types_path %>
       <%= menu_item 'Zmiana typów wyciągów', set_type_lifts_path %>
+      <%= menu_item 'Ustawienia konta', edit_user_registration_path %>
       <%= menu_item 'Wyloguj', destroy_user_session_path, method: :delete %>
     <% end %>
   <% end %>

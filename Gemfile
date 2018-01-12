@@ -13,7 +13,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'pg', group: :production
+gem 'pg', '~> 0.18', group: :production
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
 gem 'rails-i18n', '~> 5.0.0'

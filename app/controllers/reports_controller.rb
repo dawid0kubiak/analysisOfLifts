@@ -3,15 +3,16 @@ class ReportsController < ApplicationController
   protect_from_forgery except: :show
 
   def cards
+    @lifts = @lifts.where(transaction_type: 'Płatność kartą')
     @chart_data = chart_data @lifts
-    @lifts = @lifts.where(transaction_type: 'Płatność kartą').order(date_of_commissioned: :desc)
+    @lifts = @lifts.order(date_of_commissioned: :desc)
   end
 
   def all_operation
     @sql = sql_build
-    @lifts = @lifts.where('amount < 0').where(@sql).order(date_of_commissioned: :desc)
+    @lifts = @lifts.where('amount < 0').where(@sql)
     @chart_data = chart_data @lifts
-
+    @lifts = @lifts.order(date_of_commissioned: :desc)
   end
 
   private
@@ -26,7 +27,7 @@ class ReportsController < ApplicationController
   def get_data(data, *model)
     sum = data.map {|d| d[1]}.sum
     data.map {|data| format_data(data, sum, model)
-      {value: data[1].abs, label: data[0]}}.to_json
+    {value: data[1].abs, label: data[0]}}.to_json
   end
 
   def format_data(data, sum, model)

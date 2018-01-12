@@ -9,8 +9,8 @@ class ReportsController < ApplicationController
 
   def all_operation
     @sql = sql_build
-    @chart_data = chart_data @lifts
     @lifts = @lifts.where('amount < 0').where(@sql).order(date_of_commissioned: :desc)
+    @chart_data = chart_data @lifts
 
   end
 

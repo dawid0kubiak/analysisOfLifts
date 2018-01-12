@@ -3,14 +3,14 @@ class ReportsController < ApplicationController
   protect_from_forgery except: :show
 
   def cards
-    @lifts = @lifts.where(transaction_type: 'Płatność kartą')
     @chart_data = chart_data @lifts
+    @lifts = @lifts.where(transaction_type: 'Płatność kartą').order(date_of_commissioned: :desc)
   end
 
   def all_operation
     @sql = sql_build
-    @lifts = @lifts.where('amount < 0').where(@sql)
     @chart_data = chart_data @lifts
+    @lifts = @lifts.where('amount < 0').where(@sql).order(date_of_commissioned: :desc)
 
   end
 
@@ -51,7 +51,7 @@ class ReportsController < ApplicationController
   end
 
   def init
-    @lifts = Lift.where('user_id = ? and lift_type_id <> -2', current_user.id).order(date_of_commissioned: :desc)
+    @lifts = Lift.where('user_id = ? and lift_type_id <> -2', current_user.id)
   end
 
   def where_build(simple, sql)

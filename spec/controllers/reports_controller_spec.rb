@@ -1,14 +1,10 @@
 require 'rails_helper'
+require 'support/devise_support'
 
 RSpec.describe ReportsController, type: :controller do
   include Devise::Test::ControllerHelpers
   before (:each) do
-    @user = User.create!({
-                             email: 'user@test.com',
-                             password: 'please',
-                             password_confirmation: 'please'
-                         })
-    sign_in @user
+    sign_in_user
   end
   describe 'GET Index' do
     it "renders the index template" do

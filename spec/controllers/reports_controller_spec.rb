@@ -1,5 +1,4 @@
 require 'rails_helper'
-# require 'support/devise_support'
 
 RSpec.describe ReportsController, type: :controller do
   include Devise::Test::ControllerHelpers

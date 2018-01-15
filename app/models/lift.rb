@@ -7,18 +7,18 @@ class Lift < ApplicationRecord
       next if index == 0
       lift = Lift.find_or_create_by(id_lift: row[0].to_i)
       lift.update(
-        date_of_booking: row[1],
-        date_of_commissioned: row[2],
-        transaction_type: row[3],
-        amount: row[4],
-        currency: row[5],
-        balance: row[6],
-        account: row[7],
-        name: row[8],
-        description: row[9],
-        addtional_data: row[10],
-        lift_type_id: -1,
-        user_id: current_user_id
+          date_of_booking: row[1],
+          date_of_commissioned: row[2],
+          transaction_type: row[3],
+          amount: row[4],
+          currency: row[5],
+          balance: row[6],
+          account: row[7],
+          name: row[8],
+          description: row[9],
+          addtional_data: row[10],
+          lift_type_id: -1,
+          user_id: current_user_id
       )
     end
     set_type current_user_id

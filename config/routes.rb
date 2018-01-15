@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get 'reports/sub_form'
 
   resources :lifts, only: :index do
-    collection { post :import }
-    collection { get :set_type }
+    collection {post :import}
+    collection {get :set_type}
   end
 
   root 'lifts#index'

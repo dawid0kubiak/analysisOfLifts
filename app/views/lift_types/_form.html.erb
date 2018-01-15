@@ -2,7 +2,8 @@
   <%= bootstrap_form_for(@lift_type) do |f| %>
     <%= f.text_field :name, label: 'Nazwa' %>
     <%= f.text_field :condition, label: 'Zapytanie' %>
-    na przykład: <pre>name like '%ROSSMANN%'</pre>
+    na przykład:
+    <pre>name like '%ROSSMANN%'</pre>
     <%= f.submit 'Zapisz', class: 'btn btn-primary' %>
     <%= link_to 'Anuluj', lift_types_path, :class => 'btn btn-default' %>
   <% end %>

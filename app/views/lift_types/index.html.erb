@@ -4,22 +4,22 @@
 
 <table data-toggle="table" data-search="true">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Zapytanie</th>
-      <th colspan="2"></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Zapytanie</th>
+    <th colspan="2"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @lift_types.each do |lift_type| %>
-      <tr>
-        <td><%= lift_type.name %></td>
-        <td><%= lift_type.condition %></td>
-        <td><%= link_to 'Edit', edit_lift_type_path(lift_type) %></td>
-        <td><%= link_to 'Destroy', lift_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @lift_types.each do |lift_type| %>
+    <tr>
+      <td><%= lift_type.name %></td>
+      <td><%= lift_type.condition %></td>
+      <td><%= link_to 'Edit', edit_lift_type_path(lift_type) %></td>
+      <td><%= link_to 'Destroy', lift_type, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 

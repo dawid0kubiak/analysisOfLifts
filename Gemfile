@@ -26,6 +26,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'sqlite3'
   gem 'rails-controller-testing'

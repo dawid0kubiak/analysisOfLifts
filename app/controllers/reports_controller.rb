@@ -18,16 +18,17 @@ class ReportsController < ApplicationController
   private
 
   def chart_data(lifts)
-
-    {size: {height: 400, width: 600},
-     name: (get_data lifts.group(:name).select(:name, :amount).sum(:amount)),
-     type: (get_data lifts.group(:lift_type_id).select(:lift_type_id, :amount).sum(:amount), LiftType)}
+    { size: { height: 400, width: 600 },
+      name: (get_data lifts.group(:name).select(:name, :amount).sum(:amount)),
+      type: (get_data lifts.group(:lift_type_id).select(:lift_type_id, :amount).sum(:amount), LiftType) }
   end
 
   def get_data(data, *model)
-    sum = data.map {|d| d[1]}.sum
-    data.map {|data| format_data(data, sum, model)
-    {value: data[1].abs, label: data[0]}}.to_json
+    sum = data.map { |d| d[1] }.sum
+    data.map do |data|
+      format_data(data, sum, model)
+      { value: data[1].abs, label: data[0] }
+    end.to_json
   end
 
   def format_data(data, sum, model)
@@ -62,10 +63,10 @@ class ReportsController < ApplicationController
     operator = simple[:operator]
 
     sql += case condition
-             when /like/
-               filed + ' ' + condition + " '%" + value + "%' " + add_oper(operator)
-             else
-               filed + ' ' + condition + " '" + value + "' " + add_oper(operator)
+           when /like/
+             filed + ' ' + condition + " '%" + value + "%' " + add_oper(operator)
+           else
+             filed + ' ' + condition + " '" + value + "' " + add_oper(operator)
            end
     sql
   end

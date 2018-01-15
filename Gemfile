@@ -25,12 +25,14 @@ gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
+  gem 'capybara'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'sqlite3'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'
+  gem 'selenium-webdriver'
 end
 
 group :development do

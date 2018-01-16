@@ -9,13 +9,38 @@ class ReportsController < ApplicationController
   end
 
   def all_operation
-    @sql = sql_build
-    @lifts = @lifts.where('amount < 0').where(@sql)
+    session[:form_date] = params.require(:form_date).permit(:type, :start, :stop) if params.keys.include? 'form_date'
+    session[:sql] = sql_build unless (params.keys & %w[simple product value]).empty?
+    if params.keys.include? 'clear'
+      session.delete(:sql)
+      session.delete(:form_date)
+    end
+    @form_date = FormDate.new(session[:form_date])
+    @sql = session[:sql]
+    @lifts = @lifts.where('amount < 0').where(sql_date).where(@sql)
     @chart_data = chart_data @lifts
     @lifts = @lifts.order(date_of_commissioned: :desc)
   end
 
   private
+
+  def sql_date
+    case @form_date.type
+      when 'commissioned'
+        set_date
+      ['date_of_commissioned between ? and ?', @form_date.start, @form_date.stop]
+    when 'booking'
+        set_date
+      ['date_of_booking between ? and ?', @form_date.start, @form_date.stop]
+    else
+      []
+    end
+  end
+
+  def set_date
+    @form_date.start = '1900-01-01' if @form_date.start == ''
+    @form_date.stop = Time.now.strftime("%Y-%m-%d") if @form_date.stop == ''
+  end
 
   def chart_data(lifts)
     { size: { height: 400, width: 600 },
@@ -54,6 +79,7 @@ class ReportsController < ApplicationController
 
   def init
     @lifts = Lift.where('user_id = ? and lift_type_id <> -2', current_user.id)
+    @form_date = FormDate.new
   end
 
   def where_build(simple, sql)

@@ -8,8 +8,10 @@
     <%= pie :type_chart, @chart_data[:size], @chart_data[:type] %>
   </div>
   <div class="col-md-4">
-    <%= render 'form', dane: 'start' %>
-    <pre><%= session[:sql] %></pre>
+    <%= render 'form_from_to_date' %>
+    <%= render 'form' %>
+    <pre><%= @sql %></pre>
+    <%= render 'clear_session' %>
   </div>
 </div>
 <div class="row">

@@ -4,7 +4,7 @@
   </div>
   <%= link_to "<span class=\"glyphicon glyphicon-plus\"></span>".html_safe, 'javascript:;', id: 'addFilter' %>
   <div class="actions">
-    <%= f.submit 'Filtruj' %>
+    <%= f.submit 'Filtruj', class: 'btn btn-primary' %>
   </div>
 <% end %>
 <%= bootstrap_form_tag url: url do |f| %>

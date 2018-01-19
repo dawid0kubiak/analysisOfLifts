@@ -7,7 +7,7 @@ end
 
 gem 'bootstrap-table-rails'
 gem 'bootstrap_form'
-gem 'chart'
+gem 'chartkick'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'devise-i18n'
@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'pg', '~> 0.18', group: :production
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
+gem 'rails-bootstrap-tabs'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'redis-rails'
 gem 'sass-rails', '~> 5.0'

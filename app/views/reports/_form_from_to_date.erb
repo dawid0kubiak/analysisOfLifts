@@ -1,17 +1,15 @@
 <%= bootstrap_form_for @form_date, url: reports_all_operation_path do |f| %>
-  <div class="row">
+    <div class="col-md-2">
     <%= f.radio_button :type, 'commissioned', label: 'Data transakcji', checked: true %>
     <%= f.radio_button :type, 'booking', label: 'Data księgowania' %>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
+    </div>
+    <div class="col-md-2">
       <%= f.date_field :start, value: @form_date.start %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
       <%= f.date_field :stop, value: @form_date.stop %>
     </div>
-    <div class="col-md-4" style="margin-top: 25px;">
+    <div class="col-md-2" style="margin-top: 25px;">
       <%= f.submit 'Ustaw datę', class: 'btn btn-success' %>
     </div>
-  </div>
 <% end %>

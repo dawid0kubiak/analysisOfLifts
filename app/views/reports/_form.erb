@@ -1,26 +1,14 @@
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active">
-    <a href="#simple" aria-controls="simple" role="tab" data-toggle="tab">Ustaw filter</a>
-  </li>
-  <li role="presentation">
-    <a href="#saved" aria-controls="saved" role="tab" data-toggle="tab">Filtry zapisaneme</a>
-  </li>
-  <li role="presentation">
-    <a href="#advanced" aria-controls="advanced" role="tab" data-toggle="tab">Zaawansowane</a>
-  </li>
-</ul>
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="simple">
+<%= tabs do |tab| %>
+  <% tab.tab 'Ustaw filte' do %>
     <%= render 'simple_filters', url: reports_all_operation_path %>
-  </div>
-  <div role="tabpanel" class="tab-pane" id="saved">
+  <% end %>
+  <% tab.tab 'Filtry zapisaneme' do %>
     <%= render 'saved_filters', url: reports_all_operation_path %>
-  </div>
-  <div role="tabpanel" class="tab-pane" id="advanced">
+  <% end %>
+  <% tab.tab 'Zaawansowane' do %>
     <%= render 'advanced_filters', url: reports_all_operation_path %>
-  </div>
-</div>
-
+  <% end %>
+<% end %>
 
 
 

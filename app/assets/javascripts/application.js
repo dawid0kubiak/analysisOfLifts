@@ -16,8 +16,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap-table
-//= require chart
 //= require locale/bootstrap-table-pl-PL
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {

@@ -28,12 +28,12 @@ class ReportsController < ApplicationController
     case @form_date.type
       when 'commissioned'
         set_date
-      ['date_of_commissioned between ? and ?', @form_date.start, @form_date.stop]
-    when 'booking'
+        ['date_of_commissioned between ? and ?', @form_date.start, @form_date.stop]
+      when 'booking'
         set_date
-      ['date_of_booking between ? and ?', @form_date.start, @form_date.stop]
-    else
-      []
+        ['date_of_booking between ? and ?', @form_date.start, @form_date.stop]
+      else
+        []
     end
   end
 
@@ -43,17 +43,26 @@ class ReportsController < ApplicationController
   end
 
   def chart_data(lifts)
-    { size: { height: 400, width: 600 },
-      name: (get_data lifts.group(:name).select(:name, :amount).sum(:amount)),
-      type: (get_data lifts.group(:lift_type_id).select(:lift_type_id, :amount).sum(:amount), LiftType) }
+    {
+        name: (get_data lifts.group(:name).select(:name, :amount).sum(:amount)),
+        type: (get_data lifts.group(:lift_type_id).select(:lift_type_id, :amount).sum(:amount), LiftType),
+        line: get_line_data(lifts)
+    }
+  end
+
+  def get_line_data(lifts)
+    lifts.group(:date_of_commissioned).pluck(:date_of_commissioned, :amount).map do |lift|
+      lift[1] = lift[1].abs
+      lift
+    end
   end
 
   def get_data(data, *model)
-    sum = data.map { |d| d[1] }.sum
+    sum = data.map {|d| d[1]}.sum
     data.map do |data|
       format_data(data, sum, model)
-      { value: data[1].abs, label: data[0] }
-    end.to_json
+      [data[0], data[1].abs]
+    end
   end
 
   def format_data(data, sum, model)
@@ -89,10 +98,10 @@ class ReportsController < ApplicationController
     operator = simple[:operator]
 
     sql += case condition
-           when /like/
-             filed + ' ' + condition + " '%" + value + "%' " + add_oper(operator)
-           else
-             filed + ' ' + condition + " '" + value + "' " + add_oper(operator)
+             when /like/
+               filed + ' ' + condition + " '%" + value + "%' " + add_oper(operator)
+             else
+               filed + ' ' + condition + " '" + value + "' " + add_oper(operator)
            end
     sql
   end

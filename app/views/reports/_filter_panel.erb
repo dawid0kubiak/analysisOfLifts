@@ -1,0 +1,38 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Filtry</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-4">
+      <div class="input-group">
+  <span class="input-group-btn">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#filterModal">Filtruj</button>
+  </span>
+        <input type="text" class="form-control" placeholder="Filtr" value="<%= @sql %>" readonly>
+      </div>
+    </div>
+    <%= render 'form_from_to_date' %>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="filterModalLabel">Filtry</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'form' %>
+        <div class="modal-footer">
+
+        <%= render 'clear_session' %>
+          <input type="submit" name="commit" value="Wyczyść filtry" class="btn btn-info" data-disable-with="Wyczyść filtry" form="clear">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

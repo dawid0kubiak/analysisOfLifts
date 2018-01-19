@@ -1,0 +1,11 @@
+<div class="col-md-4">
+  <h2>Podział wg nazwy:</h2>
+  <%= pie_chart @chart_data[:name], legend: false %>
+</div>
+<div class="col-md-4">
+  <h2>Podział wg typu:</h2>
+  <%= pie_chart @chart_data[:type] %>
+</div>
+<div class="col-md-4">
+<%= line_chart @chart_data[:line] %>
+  </div>

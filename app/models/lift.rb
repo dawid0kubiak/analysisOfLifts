@@ -4,7 +4,7 @@ class Lift < ApplicationRecord
 
   def self.import(file, current_user_id)
     CSV.foreach(file.path, encoding: 'windows-1250:utf-8').with_index do |row, index|
-      next if index == 0
+      next if index == 0 if true
       lift = Lift.find_or_create_by(id_lift: row[0].to_i)
       lift.update(
           date_of_booking: row[1],

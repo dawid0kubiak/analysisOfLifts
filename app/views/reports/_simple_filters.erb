@@ -7,6 +7,7 @@
     <%= f.submit 'Filtruj', class: 'btn btn-primary' %>
   </div>
 <% end %>
+
 <%= bootstrap_form_tag url: url do |f| %>
   <div class="hide" id="new_filter_form">
     <%= f.select '[simple][]operator', [['i', 'and'], ['lub', 'or']], label: 'warunek' %>

@@ -51,7 +51,7 @@ class ReportsController < ApplicationController
   end
 
   def get_line_data(lifts)
-    lifts.group(:date_of_commissioned).pluck(:date_of_commissioned, :amount).map do |lift|
+    lifts.group(:date_of_commissioned).select(:date_of_commissioned, :amount).pluck(:date_of_commissioned, :amount).map do |lift|
       lift[1] = lift[1].abs
       lift
     end

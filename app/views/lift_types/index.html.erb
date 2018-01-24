@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lift Types</h1>
+<h1>Typy wydatków</h1>
 
+<%= link_to 'Nowy typ wyciągu', new_lift_type_path, class: 'btn btn-success' %>
+<br>
+<br>
 <table data-toggle="table" data-search="true">
   <thead>
   <tr>
@@ -23,7 +26,5 @@
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Lift Type', new_lift_type_path %>
 

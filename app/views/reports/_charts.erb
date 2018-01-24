@@ -4,7 +4,7 @@
 </div>
 <div class="col-md-4">
   <h2>Podział wg typu:</h2>
-  <%= pie_chart @chart_data[:type] %>
+  <%= pie_chart @chart_data[:type], legend: false %>
 </div>
 <div class="col-md-4">
 <%= line_chart @chart_data[:line] %>

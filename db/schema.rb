@@ -10,47 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_180_105_125_351) do
-  create_table 'lift_types', force: :cascade do |t|
-    t.string 'name'
-    t.string 'condition'
-    t.integer 'user_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+ActiveRecord::Schema.define(version: 20180105125351) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "lift_types", force: :cascade do |t|
+    t.string "name"
+    t.string "condition"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'lifts', force: :cascade do |t|
-    t.integer 'id_lift'
-    t.date 'date_of_booking'
-    t.date 'date_of_commissioned'
-    t.string 'transaction_type'
-    t.decimal 'amount', precision: 8, scale: 2
-    t.string 'currency'
-    t.decimal 'balance', precision: 8, scale: 2
-    t.string 'account'
-    t.string 'name'
-    t.integer 'lift_type_id'
-    t.integer 'user_id'
-    t.text 'description'
-    t.text 'addtional_data'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "lifts", force: :cascade do |t|
+    t.integer "id_lift"
+    t.date "date_of_booking"
+    t.date "date_of_commissioned"
+    t.string "transaction_type"
+    t.decimal "amount", precision: 8, scale: 2
+    t.string "currency"
+    t.decimal "balance", precision: 8, scale: 2
+    t.string "account"
+    t.string "name"
+    t.integer "lift_type_id"
+    t.integer "user_id"
+    t.text "description"
+    t.text "addtional_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.integer 'sign_in_count', default: 0, null: false
-    t.datetime 'current_sign_in_at'
-    t.datetime 'last_sign_in_at'
-    t.string 'current_sign_in_ip'
-    t.string 'last_sign_in_ip'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['email'], name: 'index_users_on_email', unique: true
-    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end

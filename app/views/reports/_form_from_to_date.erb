@@ -11,5 +11,8 @@
     </div>
     <div class="col-md-2" style="margin-top: 25px;">
       <%= f.submit 'Ustaw datę', class: 'btn btn-success' %>
+      <input type="submit" name="commit" value="Wyczyść daty" class="btn btn-info" form="clear_date" data-remote="true">
+
+<%= link_to 'Wyczyść daty', reports_all_operation_path(clear_date: true), remote: true %>
     </div>
 <% end %>

@@ -1,4 +1,7 @@
-<%= bootstrap_form_tag url: reports_all_operation_path, html: {id: 'clear'} do |f| %>
-  <%= f.hidden_field :clear %>
+<%= bootstrap_form_tag url: reports_all_operation_path, html: {id: 'clear_sql'} do |f| %>
+  <%= f.hidden_field :clear_sql %>
+<% end %>
+<%= bootstrap_form_tag url: reports_all_operation_path, html: {id: 'clear_date'} do |f| %>
+  <%= f.hidden_field :clear_date %>
 <% end %>
 

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :lift do
     date_of_booking '2018-01-05'
     date_of_commissioned '2018-01-05'

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ReportsController, type: :controller do
   include Devise::Test::ControllerHelpers
   before (:each) do
-    FactoryGirl.create(:lift_type)
+    FactoryBot.create(:lift_type)
     sign_in_user
   end
   describe 'all_operation' do
@@ -13,7 +13,7 @@ RSpec.describe ReportsController, type: :controller do
       expect(response).to render_template('all_operation')
     end
     it 'get all_operation' do
-      lift = FactoryGirl.create(:lift)
+      lift = FactoryBot.create(:lift)
       get :all_operation
       expect(assigns(:lifts)).to eq([lift])
     end
@@ -27,7 +27,7 @@ RSpec.describe ReportsController, type: :controller do
     end
 
     it 'get all_operation' do
-      lift = FactoryGirl.create(:lift)
+      lift = FactoryBot.create(:lift)
       get :cards
       expect(assigns(:lifts)).to eq([lift])
     end

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :lift_type, class: LiftType do
     id 1
     name 'spożywka'

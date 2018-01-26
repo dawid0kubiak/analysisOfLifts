@@ -1,6 +1,6 @@
 module ValidUserRequestHelper
   def sign_in_user
-    @user ||= FactoryGirl.create :user
+    @user ||= FactoryBot.create :user
     sign_in @user
   end
 end

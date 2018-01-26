@@ -28,7 +28,7 @@ group :development, :test do
   gem 'capybara'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'sqlite3'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'home page' do
   before (:each) do
-    FactoryGirl.create(:lift_type)
-    FactoryGirl.create(:user)
+    FactoryBot.create(:lift_type)
+    FactoryBot.create(:user)
   end
   it 'welcomes the user', js: true do
     visit '/'
